@@ -5,7 +5,7 @@ import { Balance, UserModel } from '../../models/Balance';
 
 export async function createStatement(req: Request, res: Response){
 
-  const { title, description, type, amount } = req.body;
+  const { title, description, type, amount, category_id } = req.body;
   const user_id = req.user.id;
 
   const usersBalance = await Balance.findOne<UserModel>().where('user_id').equals(user_id);
@@ -48,7 +48,7 @@ export async function createStatement(req: Request, res: Response){
       });
     }
 
-    const createStatement = await Statement.create({ title, description, type, amount, user_id });
+    const createStatement = await Statement.create({ title, description, type, amount, category_id, user_id });
     const updated = await Balance.findOneAndUpdate({ balance: updatedBalance()}).where('user_id').equals(user_id);
 
     return res.status(201).json({createStatement, updated});

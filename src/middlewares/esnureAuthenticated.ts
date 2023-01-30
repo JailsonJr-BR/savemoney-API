@@ -10,7 +10,7 @@ export function ensureAuthenticated(req: Request, res: Response, next: NextFunct
       error: 'JWT token não informado',
     });
   }
-  
+
   const [, token] = authHeader.split(' ');
 
   try {

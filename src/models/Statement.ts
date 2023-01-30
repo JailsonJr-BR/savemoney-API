@@ -24,4 +24,8 @@ export const Statement = model('Statement', new Schema({
     required: true,
     ref: 'User',
   },
+  category_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
+  },
 }));
