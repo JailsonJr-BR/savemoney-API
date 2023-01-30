@@ -19,7 +19,6 @@ export async function signSession(req: Request, res: Response){
     }
 
     const passwordMatched = await compare(password, String(user.password));
-
     if(!passwordMatched){
       return res.json({ message: 'E-mail e/ou senha incorreta' });
     }
